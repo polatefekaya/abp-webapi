@@ -1,0 +1,54 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Polat.CarFactory.Domain": {
+      "path": "src/Polat.CarFactory.Domain/Polat.CarFactory.Domain.abppkg",
+      "folder": "src"
+    },
+    "Polat.CarFactory.Application.Contracts": {
+      "path": "src/Polat.CarFactory.Application.Contracts/Polat.CarFactory.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Polat.CarFactory.Application": {
+      "path": "src/Polat.CarFactory.Application/Polat.CarFactory.Application.abppkg",
+      "folder": "src"
+    },
+    "Polat.CarFactory.EntityFrameworkCore": {
+      "path": "src/Polat.CarFactory.EntityFrameworkCore/Polat.CarFactory.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Polat.CarFactory.HttpApi": {
+      "path": "src/Polat.CarFactory.HttpApi/Polat.CarFactory.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Polat.CarFactory.HttpApi.Client": {
+      "path": "src/Polat.CarFactory.HttpApi.Client/Polat.CarFactory.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Polat.CarFactory.TestBase": {
+      "path": "test/Polat.CarFactory.TestBase/Polat.CarFactory.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Polat.CarFactory.EntityFrameworkCore.Tests": {
+      "path": "test/Polat.CarFactory.EntityFrameworkCore.Tests/Polat.CarFactory.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Polat.CarFactory.Domain.Tests": {
+      "path": "test/Polat.CarFactory.Domain.Tests/Polat.CarFactory.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Polat.CarFactory.Application.Tests": {
+      "path": "test/Polat.CarFactory.Application.Tests/Polat.CarFactory.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Polat.CarFactory.Domain.Shared": {
+      "path": "src/Polat.CarFactory.Domain.Shared/Polat.CarFactory.Domain.Shared.abppkg",
+      "folder": "src"
+    }
+  }
+}

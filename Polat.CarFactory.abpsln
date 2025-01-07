@@ -1,0 +1,16 @@
+{
+  "id": "ba14afdb-d1e3-4d6c-a874-541a7770a95f",
+  "template": "empty",
+  "options": {
+    "httpRequests": {
+      "ignoredUrls": [
+        "^/metrics$"
+      ]
+    }
+  },
+  "modules": {
+    "Polat.CarFactory": {
+      "path": "Polat.CarFactory.abpmdl"
+    }
+  }
+}
