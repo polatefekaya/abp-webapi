@@ -8,7 +8,7 @@ namespace Polat.CarFactory.Cars;
 
 public class Car : FullAuditedAggregateRoot<Guid>
 {
-    public Body CarBody {get; private set;}
+    public CarBody Body {get; private set;}
     public CarTank Tank {get; private set;}
     public ICollection<CarPart> Parts {get; private set;}
     public ICollection<CarWheel> Wheels {get; private set;}
