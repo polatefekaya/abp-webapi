@@ -18,8 +18,7 @@ public class Car : FullAuditedAggregateRoot<Guid>
     protected Car() {}
 
     internal Car(Guid id) : base(id){
-
     }
 
-    
+
 }
