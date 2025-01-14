@@ -1,6 +1,7 @@
 using System;
 using Polat.CarFactory.Entities;
 using Polat.CarFactory.Enums;
+using Polat.CarFactory.ValueObjects;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 
@@ -31,5 +32,9 @@ public class CarWheel : Entity<Guid>
     public CarWheel SetAxle(AxleEnum axle){
         Axle = axle;
         return this;
+    }
+
+    public Money GetTotalPrice(){
+        return Wheel.Price * Quantity;
     }
 }
