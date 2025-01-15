@@ -2,6 +2,7 @@
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
+using Polat.CarFactory.UseCases;
 
 namespace Polat.CarFactory;
 
@@ -20,5 +21,7 @@ public class CarFactoryApplicationModule : AbpModule
         {
             options.AddMaps<CarFactoryApplicationModule>(validate: true);
         });
+
+        context.Services.AddSingleton<ICarCreateUseCase, CarCreateUseCase>();
     }
 }
