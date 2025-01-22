@@ -1,26 +1,28 @@
 using System;
 using System.Threading.Tasks;
 using Polat.CarFactory.AppServices;
+using Polat.CarFactory.DTOs.UseCases.Body;
 using Polat.CarFactory.Enums;
-using Polat.CarFactory.UseCases.Body;
+using Polat.CarFactory.UseCases;
 using Polat.CarFactory.ValueObjects;
 
 namespace Polat.CarFactory.Controllers.v1;
 
 public class BodyController : CarFactoryController, IBodyAppService
 {
-    private readonly IBodySetCdUseCase _setCdUseCase;
-    public BodyController(IBodySetCdUseCase setCdUseCase){
-        _setCdUseCase = setCdUseCase;
+    private readonly IUseCase<SetBodyTypeDto> _setBodyTypeUseCase;
+    public BodyController(IUseCase<SetBodyTypeDto> setBodyTypeUseCase)
+    {
+        _setBodyTypeUseCase = setBodyTypeUseCase;
     }
     public Task SetBodyType(Guid bodyId, BodyEnum body)
     {
         throw new NotImplementedException();
     }
 
-    public async Task SetCd(Guid bodyId, decimal cd)
+    public async Task SetCd(SetBodyTypeDto dto)
     {
-        await _setCdUseCase.Execute(bodyId, cd);
+        await _setBodyTypeUseCase.ExecuteAsync(dto);
     }
 
     public Task SetDoorCount(Guid bodyId, int count)

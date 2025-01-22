@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DTOs\UseCases\Car\" />
     <Folder Include="Repository\" />
   </ItemGroup>
 
