@@ -4,6 +4,6 @@ using Polat.CarFactory.ValueObjects;
 
 namespace Polat.CarFactory.AppServices.Generic;
 
-public interface IGenericAppService : IPriceAppService, IWeightAppService
+public interface IGenericAppService : IPriceAppService, IWeightAppService, IVolumeAppService, IMaterialAppService
 {
 }

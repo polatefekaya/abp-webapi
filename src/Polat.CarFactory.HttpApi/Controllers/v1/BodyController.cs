@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Polat.CarFactory.AppServices;
 using Polat.CarFactory.DTOs.UseCases.Body;
+using Polat.CarFactory.DTOs.UseCases.Generic;
 using Polat.CarFactory.Enums;
 using Polat.CarFactory.UseCases;
 using Polat.CarFactory.ValueObjects;
@@ -15,37 +16,38 @@ public class BodyController : CarFactoryController, IBodyAppService
     {
         _setBodyTypeUseCase = setBodyTypeUseCase;
     }
-    public Task SetBodyType(Guid bodyId, BodyEnum body)
-    {
-        throw new NotImplementedException();
-    }
 
-    public async Task SetCd(SetBodyTypeDto dto)
+    public async Task SetBodyType(SetBodyTypeDto dto)
     {
         await _setBodyTypeUseCase.ExecuteAsync(dto);
     }
 
-    public Task SetDoorCount(Guid bodyId, int count)
+    public Task SetCd(SetBodyCdDto dto)
     {
         throw new NotImplementedException();
     }
 
-    public Task SetMaterial(Guid bodyId, MaterialEnum material)
+    public Task SetDoorCount(SetBodyDoorCountDto dto)
     {
         throw new NotImplementedException();
     }
 
-    public Task SetPrice(Guid bodyId, Money price)
+    public Task SetMaterial(SetMaterialDto dto)
     {
         throw new NotImplementedException();
     }
 
-    public Task SetVolume(Guid bodyId, int volume)
+    public Task SetPrice(SetPriceDto dto)
     {
         throw new NotImplementedException();
     }
 
-    public Task SetWeight(Guid bodyId, int weight)
+    public Task SetVolume(SetVolumeDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task SetWeight(SetWeightDto dto)
     {
         throw new NotImplementedException();
     }
