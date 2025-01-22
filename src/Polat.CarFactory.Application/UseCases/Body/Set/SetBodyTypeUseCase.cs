@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Polat.CarFactory.DTOs.UseCases.Body;
 
-namespace Polat.CarFactory.UseCases.Body;
+namespace Polat.CarFactory.UseCases.Body.Set;
 
 public class SetBodyTypeUseCase : IUseCase<SetBodyTypeDto>
 {

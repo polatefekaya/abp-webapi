@@ -12,4 +12,5 @@ public interface IBodyAppService : IGenericAppService, IMaterialAppService, IVol
     public Task SetCd(SetBodyCdDto dto);
     public Task SetBodyType(SetBodyTypeDto dto);
     public Task SetDoorCount(SetBodyDoorCountDto dto);
+    public Task<decimal> GetCd(GetBodyCdDto dto);
 }
