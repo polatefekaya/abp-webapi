@@ -5,10 +5,11 @@ using Polat.CarFactory.DTOs.UseCases.Body.Get;
 using Polat.CarFactory.DTOs.UseCases.Body.Response.Get;
 using Polat.CarFactory.DTOs.UseCases.Body.Set;
 using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
 
 namespace Polat.CarFactory.AppServices;
 
-public interface IBodyAppService : IGenericAppService, IApplicationService
+public interface IBodyAppService : IGenericAppService, IApplicationService, IScopedDependency
 {
     public Task SetCd(SetBodyCdDto dto);
     public Task SetBodyType(SetBodyTypeDto dto);

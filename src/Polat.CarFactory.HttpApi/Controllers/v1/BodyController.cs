@@ -12,88 +12,116 @@ using Polat.CarFactory.UseCases;
 
 namespace Polat.CarFactory.Controllers.v1;
 
-public class BodyController : CarFactoryController, IBodyAppService
+public class BodyController : CarFactoryController
 {
-    private readonly IUseCase<SetBodyTypeDto> _setBodyTypeUseCase;
-    private readonly IUseCase<GetBodyCdDto, decimal> _getBodyCdUseCase;
-    public BodyController(IUseCase<SetBodyTypeDto> setBodyTypeUseCase, IUseCase<GetBodyCdDto, decimal> getBodyCdUseCase)
+    private readonly IBodyAppService _bodyAppService;
+    public BodyController(IBodyAppService bodyAppService)
     {
-        _setBodyTypeUseCase = setBodyTypeUseCase;
-        _getBodyCdUseCase = getBodyCdUseCase;
+        _bodyAppService = bodyAppService;
     }
 
-    public Task<GetBodyResponseDto> GetBody(GetBodyDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetBodyResponseDto>> Body(GetBodyDto dto)
     {
-        throw new NotImplementedException();
+        GetBodyResponseDto response = await _bodyAppService.GetBody(dto);
+        return Ok(response);
     }
 
-    public Task<GetBodyTypeResponseDto> GetBodyType(GetBodyTypeDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetBodyTypeResponseDto>> BodyType(GetBodyTypeDto dto)
     {
-        throw new NotImplementedException();
+        GetBodyTypeResponseDto response = await _bodyAppService.GetBodyType(dto);
+        return Ok(response);
     }
 
-    public Task<GetBodyCdResponseDto> GetCd(GetBodyCdDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetBodyCdResponseDto>> Cd(GetBodyCdDto dto)
     {
-        throw new NotImplementedException();
+        GetBodyCdResponseDto response = await _bodyAppService.GetCd(dto);
+        return Ok(response);
     }
 
-    public Task<GetBodyDoorCountResponseDto> GetDoorCount(GetBodyDoorCountDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetBodyDoorCountResponseDto>> DoorCount(GetBodyDoorCountDto dto)
     {
-        throw new NotImplementedException();
+        GetBodyDoorCountResponseDto response = await _bodyAppService.GetDoorCount(dto);
+        return Ok(response);
     }
 
-    public Task<GetMaterialResponseDto> GetMaterial(GetMaterialDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetMaterialResponseDto>> Material(GetMaterialDto dto)
     {
-        throw new NotImplementedException();
+        GetMaterialResponseDto response = await _bodyAppService.GetMaterial(dto);
+        return Ok(response);
     }
 
-    public Task<GetPriceResponseDto> GetPrice(GetPriceDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPriceResponseDto>> Price(GetPriceDto dto)
     {
-        throw new NotImplementedException();
+        GetPriceResponseDto response = await _bodyAppService.GetPrice(dto);
+        return Ok(response);
     }
 
-    public Task<GetVolumeResponseDto> GetVolume(GetVolumeDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetVolumeResponseDto>> Volume(GetVolumeDto dto)
     {
-        throw new NotImplementedException();
+        GetVolumeResponseDto response = await _bodyAppService.GetVolume(dto);
+        return Ok(response);
     }
 
-    public Task<GetWeightResponseDto> GetWeight(GetWeightDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetWeightResponseDto>> Weight(GetWeightDto dto)
     {
-        throw new NotImplementedException();
+        GetWeightResponseDto response = await _bodyAppService.GetWeight(dto);
+        return Ok(response);
     }
 
-    public Task SetBodyType(SetBodyTypeDto dto)
+    [HttpPost]
+    public async Task<IActionResult> BodyType(SetBodyTypeDto dto)
     {
-        throw new NotImplementedException();
+        await _bodyAppService.SetBodyType(dto);
+        return Ok();
     }
 
-    public Task SetCd(SetBodyCdDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Cd(SetBodyCdDto dto)
     {
-        throw new NotImplementedException();
+        await _bodyAppService.SetCd(dto);
+        return Ok();
     }
 
-    public Task SetDoorCount(SetBodyDoorCountDto dto)
+    [HttpPost]
+    public async Task<IActionResult> DoorCount(SetBodyDoorCountDto dto)
     {
-        throw new NotImplementedException();
+        await _bodyAppService.SetDoorCount(dto);
+        return Ok();
     }
 
-    public Task SetMaterial(SetMaterialDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Material(SetMaterialDto dto)
     {
-        throw new NotImplementedException();
+        await _bodyAppService.SetMaterial(dto);
+        return Ok();
     }
 
-    public Task SetPrice(SetPriceDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Price(SetPriceDto dto)
     {
-        throw new NotImplementedException();
+        await _bodyAppService.SetPrice(dto);
+        return Ok();
     }
 
-    public Task SetVolume(SetVolumeDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Volume(SetVolumeDto dto)
     {
-        throw new NotImplementedException();
+        await _bodyAppService.SetVolume(dto);
+        return Ok();
     }
 
-    public Task SetWeight(SetWeightDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Weight(SetWeightDto dto)
     {
-        throw new NotImplementedException();
+        await _bodyAppService.SetWeight(dto);
+        return Ok();
     }
 }
