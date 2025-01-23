@@ -1,13 +1,62 @@
 using System;
 using System.Threading.Tasks;
 using Polat.CarFactory.AppServices;
-using Polat.CarFactory.DTOs.UseCases.Engine;
-using Polat.CarFactory.DTOs.UseCases.Generic;
+using Polat.CarFactory.DTOs.UseCases.Engine.Get;
+using Polat.CarFactory.DTOs.UseCases.Engine.Response.Get;
+using Polat.CarFactory.DTOs.UseCases.Engine.Set;
+using Polat.CarFactory.DTOs.UseCases.Generic.Get;
+using Polat.CarFactory.DTOs.UseCases.Generic.Response.Get;
+using Polat.CarFactory.DTOs.UseCases.Generic.Set;
 
 namespace Polat.CarFactory.Controllers.v1;
 
 public class EngineController : CarFactoryController, IEngineAppService
 {
+    public Task<GetEngineCylinderResponseDto> GetCylinder(GetEngineCylinderDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetEngineResponseDto> GetEngine(GetEngineDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetEngineTypeResponseDto> GetEngineType(GetEngineTypeDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetEngineHorsePowerResponseDto> GetHorsePower(GetEngineHorsePowerDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetEngineKwResponseDto> GetKw(GetEngineKwDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetPriceResponseDto> GetPrice(GetPriceDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetEngineTorqueResponseDto> GetTorque(GetEngineTorqueDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetVolumeResponseDto> GetVolume(GetVolumeDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetWeightResponseDto> GetWeight(GetWeightDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task SetCylinder(SetEngineCylinderDto dto)
     {
         throw new NotImplementedException();

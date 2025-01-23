@@ -1,12 +1,12 @@
 using System;
 using System.Threading.Tasks;
-using Polat.CarFactory.DTOs.UseCases.Body;
+using Polat.CarFactory.DTOs.UseCases.Body.Get;
 
 namespace Polat.CarFactory.UseCases.Body.Get;
 
-public class GetBodyCdUseCase : IUseCase<GetBodyCdDto, decimal>
+public class GetBodyCdUseCase : IUseCase<GetBodyCdDto, string>
 {
-    public Task<decimal> ExecuteAsync(GetBodyCdDto dto)
+    public Task<string> ExecuteAsync(GetBodyCdDto dto)
     {
         throw new NotImplementedException();
     }

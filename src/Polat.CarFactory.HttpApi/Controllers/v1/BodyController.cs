@@ -2,11 +2,13 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Polat.CarFactory.AppServices;
-using Polat.CarFactory.DTOs.UseCases.Body;
-using Polat.CarFactory.DTOs.UseCases.Generic;
-using Polat.CarFactory.Enums;
+using Polat.CarFactory.DTOs.UseCases.Body.Get;
+using Polat.CarFactory.DTOs.UseCases.Body.Response.Get;
+using Polat.CarFactory.DTOs.UseCases.Body.Set;
+using Polat.CarFactory.DTOs.UseCases.Generic.Get;
+using Polat.CarFactory.DTOs.UseCases.Generic.Response.Get;
+using Polat.CarFactory.DTOs.UseCases.Generic.Set;
 using Polat.CarFactory.UseCases;
-using Polat.CarFactory.ValueObjects;
 
 namespace Polat.CarFactory.Controllers.v1;
 
@@ -20,18 +22,51 @@ public class BodyController : CarFactoryController, IBodyAppService
         _getBodyCdUseCase = getBodyCdUseCase;
     }
 
-    [HttpGet("cd")]
-    public async Task<decimal> GetCd(GetBodyCdDto dto)
+    public Task<GetBodyResponseDto> GetBody(GetBodyDto dto)
     {
-        return await _getBodyCdUseCase.ExecuteAsync(dto);
+        throw new NotImplementedException();
     }
 
-    public async Task SetBodyType(SetBodyTypeDto dto)
+    public Task<GetBodyTypeResponseDto> GetBodyType(GetBodyTypeDto dto)
     {
-        await _setBodyTypeUseCase.ExecuteAsync(dto);
+        throw new NotImplementedException();
     }
 
-    [HttpPost("cd")]
+    public Task<GetBodyCdResponseDto> GetCd(GetBodyCdDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetBodyDoorCountResponseDto> GetDoorCount(GetBodyDoorCountDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetMaterialResponseDto> GetMaterial(GetMaterialDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetPriceResponseDto> GetPrice(GetPriceDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetVolumeResponseDto> GetVolume(GetVolumeDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetWeightResponseDto> GetWeight(GetWeightDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task SetBodyType(SetBodyTypeDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task SetCd(SetBodyCdDto dto)
     {
         throw new NotImplementedException();

@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Polat.CarFactory.DTOs.UseCases.Body;
+using Polat.CarFactory.DTOs.UseCases.Body.Set;
 
 namespace Polat.CarFactory.UseCases.Body.Set;
 
