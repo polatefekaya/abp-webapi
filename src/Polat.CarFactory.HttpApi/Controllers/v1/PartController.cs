@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Polat.CarFactory.AppServices;
 using Polat.CarFactory.DTOs.UseCases.Generic.Get;
 using Polat.CarFactory.DTOs.UseCases.Generic.Response.Get;
@@ -10,70 +11,102 @@ using Polat.CarFactory.DTOs.UseCases.Part.Set;
 
 namespace Polat.CarFactory.Controllers.v1;
 
-public class PartController : CarFactoryController, IPartAppService
+public class PartController : CarFactoryController
 {
-    public Task<GetPartAxleResponseDto> GetAxle(GetPartAxleDto dto)
-    {
-        throw new NotImplementedException();
+    private readonly IPartAppService _partAppService;
+
+    public PartController(IPartAppService partAppService){
+        _partAppService = partAppService;
     }
 
-    public Task<GetPartCategoryResponseDto> GetCategory(GetPartCategoryDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPartAxleResponseDto>> Axle(GetPartAxleDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _partAppService.GetAxle(dto);
+        return Ok(response);
     }
 
-    public Task<GetMaterialResponseDto> GetMaterial(GetMaterialDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPartCategoryResponseDto>> Category(GetPartCategoryDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _partAppService.GetCategory(dto);
+        return Ok(response);
     }
 
-    public Task<GetPartResponseDto> GetPart(GetPartDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetMaterialResponseDto>> Material(GetMaterialDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _partAppService.GetMaterial(dto);
+        return Ok(response);
     }
 
-    public Task<GetPriceResponseDto> GetPrice(GetPriceDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPartResponseDto>> Part(GetPartDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _partAppService.GetPart(dto);
+        return Ok(response);
     }
 
-    public Task<GetVolumeResponseDto> GetVolume(GetVolumeDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPriceResponseDto>> Price(GetPriceDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _partAppService.GetPrice(dto);
+        return Ok(response);
     }
 
-    public Task<GetWeightResponseDto> GetWeight(GetWeightDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetVolumeResponseDto>> Volume(GetVolumeDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _partAppService.GetVolume(dto);
+        return Ok(response);
     }
 
-    public Task SetAxle(SetPartAxleDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetWeightResponseDto>> Weight(GetWeightDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _partAppService.GetWeight(dto);
+        return Ok(response);
     }
 
-    public Task SetCategory(SetPartCategoryDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Axle(SetPartAxleDto dto)
     {
-        throw new NotImplementedException();
+        await _partAppService.SetAxle(dto);
+        return Ok();
     }
 
-    public Task SetMaterial(SetMaterialDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Category(SetPartCategoryDto dto)
     {
-        throw new NotImplementedException();
+        await _partAppService.SetCategory(dto);
+        return Ok();
     }
 
-    public Task SetPrice(SetPriceDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Material(SetMaterialDto dto)
     {
-        throw new NotImplementedException();
+        await _partAppService.SetMaterial(dto);
+        return Ok();
     }
 
-    public Task SetVolume(SetVolumeDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Price(SetPriceDto dto)
     {
-        throw new NotImplementedException();
+        await _partAppService.SetPrice(dto);
+        return Ok();
     }
 
-    public Task SetWeight(SetWeightDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Volume(SetVolumeDto dto)
     {
-        throw new NotImplementedException();
+        await _partAppService.SetVolume(dto);
+        return Ok();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Weight(SetWeightDto dto)
+    {
+        await _partAppService.SetWeight(dto);
+        return Ok();
     }
 }

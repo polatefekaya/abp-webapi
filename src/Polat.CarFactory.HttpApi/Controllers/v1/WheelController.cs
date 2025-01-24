@@ -11,50 +11,74 @@ using Polat.CarFactory.DTOs.UseCases.Wheel.Set;
 
 namespace Polat.CarFactory.Controllers.v1;
 
-public class WheelController : CarFactoryController, IWheelAppService
+public class WheelController : CarFactoryController
 {
-    public Task<GetMaterialResponseDto> GetMaterial(GetMaterialDto dto)
-    {
-        throw new NotImplementedException();
+    private readonly IWheelAppService _wheelAppService;
+
+    public WheelController(IWheelAppService wheelAppService){
+        _wheelAppService = wheelAppService;
     }
 
-    public Task<GetPriceResponseDto> GetPrice(GetPriceDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetMaterialResponseDto>> Material(GetMaterialDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _wheelAppService.GetMaterial(dto);
+        return Ok(response);
     }
 
-    public Task<GetWheelSizeResponseDto> GetSize(GetWheelSizeDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPriceResponseDto>> Price(GetPriceDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _wheelAppService.GetPrice(dto);
+        return Ok(response);
     }
 
-    public Task<GetWeightResponseDto> GetWeight(GetWeightDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetWheelSizeResponseDto>> Size(GetWheelSizeDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _wheelAppService.GetSize(dto);
+        return Ok(response);
     }
 
-    public Task<GetWheelResponseDto> GetWheel(GetWheelDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetWeightResponseDto>> Weight(GetWeightDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _wheelAppService.GetWeight(dto);
+        return Ok(response);
     }
 
-    public Task SetMaterial(SetMaterialDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetWheelResponseDto>> Wheel(GetWheelDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _wheelAppService.GetWheel(dto);
+        return Ok(response);
     }
 
-    public Task SetPrice(SetPriceDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Material(SetMaterialDto dto)
     {
-        throw new NotImplementedException();
+        await _wheelAppService.SetMaterial(dto);
+        return Ok();
     }
 
-    public Task SetSize(SetWheelSizeDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Price(SetPriceDto dto)
     {
-        throw new NotImplementedException();
+        await _wheelAppService.SetPrice(dto);
+        return Ok();
     }
 
-    public Task SetWeight(SetWeightDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Size(SetWheelSizeDto dto)
     {
-        throw new NotImplementedException();
+        await _wheelAppService.SetSize(dto);
+        return Ok();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Weight(SetWeightDto dto)
+    {
+        await _wheelAppService.SetWeight(dto);
+        return Ok();
     }
 }

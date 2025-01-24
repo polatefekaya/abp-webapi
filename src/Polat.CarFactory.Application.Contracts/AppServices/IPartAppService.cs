@@ -5,10 +5,11 @@ using Polat.CarFactory.DTOs.UseCases.Part.Get;
 using Polat.CarFactory.DTOs.UseCases.Part.Response.Get;
 using Polat.CarFactory.DTOs.UseCases.Part.Set;
 using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
 
 namespace Polat.CarFactory.AppServices;
 
-public interface IPartAppService : IGenericAppService, IApplicationService
+public interface IPartAppService : IGenericAppService, IApplicationService, IScopedDependency
 {
     public Task SetAxle(SetPartAxleDto dto);
     public Task SetCategory(SetPartCategoryDto dto);

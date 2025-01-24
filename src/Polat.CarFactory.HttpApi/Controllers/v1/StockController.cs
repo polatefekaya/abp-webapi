@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Polat.CarFactory.AppServices;
 using Polat.CarFactory.DTOs.UseCases.Stock.Get;
 using Polat.CarFactory.DTOs.UseCases.Stock.Response.Get;
@@ -7,30 +8,46 @@ using Polat.CarFactory.DTOs.UseCases.Stock.Set;
 
 namespace Polat.CarFactory.Controllers.v1;
 
-public class StockController : CarFactoryController, IStockAppService
+public class StockController : CarFactoryController
 {
-    public Task AddCount(AddStockCountDto dto)
-    {
-        throw new NotImplementedException();
+    private IStockAppService _stockAppService;
+
+    public StockController(IStockAppService stockAppService){
+        _stockAppService = stockAppService;
     }
 
-    public Task<GetStockCountResponseDto> GetCount(GetStockCountDto dto)
+    [HttpPut] //AddCount
+    public async Task<IActionResult> Count(AddStockCountDto dto)
     {
-        throw new NotImplementedException();
+        await _stockAppService.AddCount(dto);
+        return Ok();
     }
 
-    public Task<GetStockResponseDto> GetStock(GetStockDto dto)
+    [HttpGet] //GetCount
+    public async Task<ActionResult<GetStockCountResponseDto>> Count(GetStockCountDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _stockAppService.GetCount(dto);
+        return Ok(response);
     }
 
-    public Task RemoveCount(RemoveStockCountDto dto)
+    [HttpGet] //GetStock
+    public async Task<ActionResult<GetStockResponseDto>> Stock(GetStockDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _stockAppService.GetStock(dto);
+        return Ok(response);
     }
 
-    public Task SetCount(SetStockCountDto dto)
+    [HttpDelete] //RemoveCount
+    public async Task<IActionResult> Count(RemoveStockCountDto dto)
     {
-        throw new NotImplementedException();
+        await _stockAppService.RemoveCount(dto);
+        return Ok();
+    }
+
+    [HttpPost] //SetCount
+    public async Task<IActionResult> Count(SetStockCountDto dto)
+    {
+        await _stockAppService.SetCount(dto);
+        return Ok();
     }
 }
