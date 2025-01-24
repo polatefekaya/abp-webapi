@@ -5,10 +5,11 @@ using Polat.CarFactory.DTOs.UseCases.Engine.Get;
 using Polat.CarFactory.DTOs.UseCases.Engine.Response.Get;
 using Polat.CarFactory.DTOs.UseCases.Engine.Set;
 using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
 
 namespace Polat.CarFactory.AppServices;
 
-public interface IEngineAppService : IWeightAppService, IPriceAppService, IVolumeAppService, IApplicationService
+public interface IEngineAppService : IWeightAppService, IPriceAppService, IVolumeAppService, IApplicationService, IScopedDependency
 {
     public Task SetCylinder(SetEngineCylinderDto dto);
     public Task SetHorsePower(SetEngineHorsePowerDto dto);

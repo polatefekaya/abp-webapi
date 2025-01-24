@@ -5,10 +5,11 @@ using Polat.CarFactory.DTOs.UseCases.Paint.Get;
 using Polat.CarFactory.DTOs.UseCases.Paint.Response.Get;
 using Polat.CarFactory.DTOs.UseCases.Paint.Set;
 using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
 
 namespace Polat.CarFactory.AppServices;
 
-public interface IPaintAppService : IPriceAppService, IApplicationService
+public interface IPaintAppService : IPriceAppService, IApplicationService, IScopedDependency
 {
     public Task SetColorCode(SetPaintColorCodeDto dto);
     public Task SetName(SetPaintNameDto dto);

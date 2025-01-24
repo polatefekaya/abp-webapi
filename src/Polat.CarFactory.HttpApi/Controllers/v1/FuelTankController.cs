@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Polat.CarFactory.AppServices;
 using Polat.CarFactory.DTOs.UseCases.FuelTank.Get;
 using Polat.CarFactory.DTOs.UseCases.FuelTank.Response.Get;
@@ -10,40 +11,60 @@ using Polat.CarFactory.DTOs.UseCases.Generic.Set;
 
 namespace Polat.CarFactory.Controllers.v1;
 
-public class FuelTankController : CarFactoryController, IFuelTankAppService
+public class FuelTankController : CarFactoryController
 {
-    public Task<GetFuelTankCapacityResponseDto> GetCapacity(GetFuelTankCapacityDto dto)
-    {
-        throw new NotImplementedException();
+    private readonly IFuelTankAppService _fuelTankAppService;
+
+    public FuelTankController(IFuelTankAppService fuelTankAppService){
+        _fuelTankAppService = fuelTankAppService;
     }
 
-    public Task<GetPriceResponseDto> GetPrice(GetPriceDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetFuelTankCapacityResponseDto>> Capacity(GetFuelTankCapacityDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _fuelTankAppService.GetCapacity(dto);
+        return Ok(response);
     }
 
-    public Task<GetFuelTankResponseDto> GetTank(GetFuelTankDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPriceResponseDto>> Price(GetPriceDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _fuelTankAppService.GetPrice(dto);
+        return Ok(response);
     }
 
-    public Task<GetFuelTankTypeResponseDto> GetTankType(GetFuelTankTypeDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetFuelTankResponseDto>> Tank(GetFuelTankDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _fuelTankAppService.GetTank(dto);
+        return Ok(response);
     }
 
-    public Task SetCapacity(SetFuelTankCapacityDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetFuelTankTypeResponseDto>> TankType(GetFuelTankTypeDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _fuelTankAppService.GetTankType(dto);
+        return Ok(response);
     }
 
-    public Task SetPrice(SetPriceDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Capacity(SetFuelTankCapacityDto dto)
     {
-        throw new NotImplementedException();
+        await _fuelTankAppService.SetCapacity(dto);
+        return Ok();
     }
 
-    public Task SetTankType(SetFuelTankTypeDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Price(SetPriceDto dto)
     {
-        throw new NotImplementedException();
+        await _fuelTankAppService.SetPrice(dto);
+        return Ok();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> TankType(SetFuelTankTypeDto dto)
+    {
+        await _fuelTankAppService.SetTankType(dto);
+        return Ok();
     }
 }

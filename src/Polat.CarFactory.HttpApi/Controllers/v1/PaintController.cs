@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Polat.CarFactory.AppServices;
 using Polat.CarFactory.DTOs.UseCases.Generic.Get;
 using Polat.CarFactory.DTOs.UseCases.Generic.Response.Get;
@@ -10,40 +11,59 @@ using Polat.CarFactory.DTOs.UseCases.Paint.Set;
 
 namespace Polat.CarFactory.Controllers.v1;
 
-public class PaintController : CarFactoryController, IPaintAppService
+public class PaintController : CarFactoryController
 {
-    public Task<GetPaintColorCodeResponseDto> GetColorCode(GetPaintColorCodeDto dto)
+    private readonly IPaintAppService _paintAppService;
+
+    public PaintController(IPaintAppService paintAppService){
+        _paintAppService = paintAppService;
+    }
+    [HttpGet]
+    public async Task<ActionResult<GetPaintColorCodeResponseDto>> ColorCode(GetPaintColorCodeDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _paintAppService.GetColorCode(dto);
+        return Ok(response);
     }
 
-    public Task<GetPaintNameResponseDto> GetName(GetPaintNameDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPaintNameResponseDto>> Name(GetPaintNameDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _paintAppService.GetName(dto);
+        return Ok(response);
     }
 
-    public Task<GetPaintResponseDto> GetPaint(GetPaintDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPaintResponseDto>> Paint(GetPaintDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _paintAppService.GetPaint(dto);
+        return Ok(response);
     }
 
-    public Task<GetPriceResponseDto> GetPrice(GetPriceDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPriceResponseDto>> Price(GetPriceDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _paintAppService.GetPrice(dto);
+        return Ok(response);
     }
 
-    public Task SetColorCode(SetPaintColorCodeDto dto)
+    [HttpPost]
+    public async Task<IActionResult> ColorCode(SetPaintColorCodeDto dto)
     {
-        throw new NotImplementedException();
+        await _paintAppService.SetColorCode(dto);
+        return Ok();
     }
 
-    public Task SetName(SetPaintNameDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Name(SetPaintNameDto dto)
     {
-        throw new NotImplementedException();
+        await _paintAppService.SetName(dto);
+        return Ok();
     }
 
-    public Task SetPrice(SetPriceDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Price(SetPriceDto dto)
     {
-        throw new NotImplementedException();
+        await _paintAppService.SetPrice(dto);
+        return Ok();
     }
 }

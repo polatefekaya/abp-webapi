@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Polat.CarFactory.AppServices;
 using Polat.CarFactory.DTOs.UseCases.Engine.Get;
 using Polat.CarFactory.DTOs.UseCases.Engine.Response.Get;
@@ -10,90 +11,131 @@ using Polat.CarFactory.DTOs.UseCases.Generic.Set;
 
 namespace Polat.CarFactory.Controllers.v1;
 
-public class EngineController : CarFactoryController, IEngineAppService
+public class EngineController : CarFactoryController
 {
-    public Task<GetEngineCylinderResponseDto> GetCylinder(GetEngineCylinderDto dto)
+    private IEngineAppService _engineAppService;
+    public EngineController(IEngineAppService engineAppService)
     {
-        throw new NotImplementedException();
+        _engineAppService = engineAppService;
     }
 
-    public Task<GetEngineResponseDto> GetEngine(GetEngineDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetEngineCylinderResponseDto>> Cylinder(GetEngineCylinderDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _engineAppService.GetCylinder(dto);
+        return Ok(response);
     }
 
-    public Task<GetEngineTypeResponseDto> GetEngineType(GetEngineTypeDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetEngineResponseDto>> Engine(GetEngineDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _engineAppService.GetEngine(dto);
+        return Ok(response);
     }
 
-    public Task<GetEngineHorsePowerResponseDto> GetHorsePower(GetEngineHorsePowerDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetEngineTypeResponseDto>> EngineType(GetEngineTypeDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _engineAppService.GetEngineType(dto);
+        return Ok(response);
     }
 
-    public Task<GetEngineKwResponseDto> GetKw(GetEngineKwDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetEngineHorsePowerResponseDto>> HorsePower(GetEngineHorsePowerDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _engineAppService.GetHorsePower(dto);
+        return Ok(response);
     }
 
-    public Task<GetPriceResponseDto> GetPrice(GetPriceDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetEngineKwResponseDto>> Kw(GetEngineKwDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _engineAppService.GetKw(dto);
+        return Ok(response);
     }
 
-    public Task<GetEngineTorqueResponseDto> GetTorque(GetEngineTorqueDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetPriceResponseDto>> Price(GetPriceDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _engineAppService.GetPrice(dto);
+        return Ok(response);
     }
 
-    public Task<GetVolumeResponseDto> GetVolume(GetVolumeDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetEngineTorqueResponseDto>> Torque(GetEngineTorqueDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _engineAppService.GetTorque(dto);
+        return Ok(response);
     }
 
-    public Task<GetWeightResponseDto> GetWeight(GetWeightDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetVolumeResponseDto>> Volume(GetVolumeDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _engineAppService.GetVolume(dto);
+        return Ok(response);
     }
 
-    public Task SetCylinder(SetEngineCylinderDto dto)
+    [HttpGet]
+    public async Task<ActionResult<GetWeightResponseDto>> Weight(GetWeightDto dto)
     {
-        throw new NotImplementedException();
+        var response = await _engineAppService.GetWeight(dto);
+        return Ok(response);
     }
 
-    public Task SetEngineType(SetEngineTypeDto dto)
+
+    [HttpPost]
+    public async Task<IActionResult> Cylinder(SetEngineCylinderDto dto)
     {
-        throw new NotImplementedException();
+        await _engineAppService.SetCylinder(dto);
+        return Ok();
     }
 
-    public Task SetHorsePower(SetEngineHorsePowerDto dto)
+    [HttpPost]
+    public async Task<IActionResult> EngineType(SetEngineTypeDto dto)
     {
-        throw new NotImplementedException();
+        await _engineAppService.SetEngineType(dto);
+        return Ok();
     }
 
-    public Task SetKw(SetEngineKwDto dto)
+    [HttpPost]
+    public async Task<IActionResult> HorsePower(SetEngineHorsePowerDto dto)
     {
-        throw new NotImplementedException();
+        await _engineAppService.SetHorsePower(dto);
+        return Ok();
     }
 
-    public Task SetPrice(SetPriceDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Kw(SetEngineKwDto dto)
     {
-        throw new NotImplementedException();
+        await _engineAppService.SetKw(dto);
+        return Ok();
     }
 
-    public Task SetTorque(SetEngineTorqueDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Price(SetPriceDto dto)
     {
-        throw new NotImplementedException();
+        await _engineAppService.SetPrice(dto);
+        return Ok();
     }
 
-    public Task SetVolume(SetVolumeDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Torque(SetEngineTorqueDto dto)
     {
-        throw new NotImplementedException();
+        await _engineAppService.SetTorque(dto);
+        return Ok();
     }
 
-    public Task SetWeight(SetWeightDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Volume(SetVolumeDto dto)
     {
-        throw new NotImplementedException();
+        await _engineAppService.SetVolume(dto);
+        return Ok();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Weight(SetWeightDto dto)
+    {
+        await _engineAppService.SetWeight(dto);
+        return Ok();
     }
 }
