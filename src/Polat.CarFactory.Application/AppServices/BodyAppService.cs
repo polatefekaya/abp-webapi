@@ -7,33 +7,62 @@ using Polat.CarFactory.DTOs.UseCases.Body.Set;
 using Polat.CarFactory.DTOs.UseCases.Generic.Get;
 using Polat.CarFactory.DTOs.UseCases.Generic.Response.Get;
 using Polat.CarFactory.DTOs.UseCases.Generic.Set;
+using Polat.CarFactory.UseCases;
 
 namespace Polat.CarFactory.AppServices;
 
 public class BodyAppService : IBodyAppService
 {
     private readonly IGenericAppService _genericAppService;
-    public BodyAppService(IGenericAppService genericAppService){
+
+    private readonly IUseCase<GetBodyDto, GetBodyResponseDto> _getBodyUseCase;
+    private readonly IUseCase<GetBodyTypeDto, GetBodyTypeResponseDto> _getBodyTypeUseCase;
+    private readonly IUseCase<GetBodyCdDto, GetBodyCdResponseDto> _getBodyCdUseCase;
+    private readonly IUseCase<GetBodyDoorCountDto, GetBodyDoorCountResponseDto> _getBodyDoorCountUseCase;
+
+    private readonly IUseCase<SetBodyDoorCountDto> _setBodyDoorCountUseCase;
+    private readonly IUseCase<SetBodyTypeDto> _setBodyTypeUseCase;
+    private readonly IUseCase<SetBodyCdDto> _setBodyCdUseCase;
+
+    public BodyAppService(
+        IGenericAppService genericAppService,
+        IUseCase<GetBodyDto, GetBodyResponseDto> getBodyUseCase,
+        IUseCase<GetBodyTypeDto, GetBodyTypeResponseDto> getBodyTypeUseCase,
+        IUseCase<GetBodyCdDto, GetBodyCdResponseDto> getBodyCdUseCase,
+        IUseCase<GetBodyDoorCountDto, GetBodyDoorCountResponseDto> getBodyDoorCountUseCase,
+        IUseCase<SetBodyDoorCountDto> setBodyDoorCountUseCase,
+        IUseCase<SetBodyTypeDto> setBodyTypeUseCase,
+        IUseCase<SetBodyCdDto> setBodyCdUseCase
+    ){
         _genericAppService = genericAppService;
+
+        _getBodyUseCase = getBodyUseCase;
+        _getBodyCdUseCase = getBodyCdUseCase;
+        _getBodyTypeUseCase = getBodyTypeUseCase;
+        _getBodyDoorCountUseCase = getBodyDoorCountUseCase;
+
+        _setBodyCdUseCase = setBodyCdUseCase;
+        _setBodyDoorCountUseCase = setBodyDoorCountUseCase;
+        _setBodyTypeUseCase = setBodyTypeUseCase;
     }
-    public Task<GetBodyResponseDto> GetBody(GetBodyDto dto)
+    public async Task<GetBodyResponseDto> GetBody(GetBodyDto dto)
     {
-        throw new NotImplementedException();
+        return await _getBodyUseCase.ExecuteAsync(dto);
     }
 
-    public Task<GetBodyTypeResponseDto> GetBodyType(GetBodyTypeDto dto)
+    public async Task<GetBodyTypeResponseDto> GetBodyType(GetBodyTypeDto dto)
     {
-        throw new NotImplementedException();
+        return await _getBodyTypeUseCase.ExecuteAsync(dto); 
     }
 
-    public Task<GetBodyCdResponseDto> GetCd(GetBodyCdDto dto)
+    public async Task<GetBodyCdResponseDto> GetCd(GetBodyCdDto dto)
     {
-        throw new NotImplementedException();
+        return await _getBodyCdUseCase.ExecuteAsync(dto);
     }
 
-    public Task<GetBodyDoorCountResponseDto> GetDoorCount(GetBodyDoorCountDto dto)
+    public async Task<GetBodyDoorCountResponseDto> GetDoorCount(GetBodyDoorCountDto dto)
     {
-        throw new NotImplementedException();
+        return await _getBodyDoorCountUseCase.ExecuteAsync(dto);
     }
 
     public async Task<GetMaterialResponseDto> GetMaterial(GetMaterialDto dto)
@@ -56,19 +85,19 @@ public class BodyAppService : IBodyAppService
         return await _genericAppService.GetWeight(dto);
     }
 
-    public Task SetBodyType(SetBodyTypeDto dto)
+    public async Task SetBodyType(SetBodyTypeDto dto)
     {
-        throw new NotImplementedException();
+        await _setBodyTypeUseCase.ExecuteAsync(dto);
     }
 
-    public Task SetCd(SetBodyCdDto dto)
+    public async Task SetCd(SetBodyCdDto dto)
     {
-        throw new NotImplementedException();
+        await _setBodyCdUseCase.ExecuteAsync(dto);
     }
 
-    public Task SetDoorCount(SetBodyDoorCountDto dto)
+    public async Task SetDoorCount(SetBodyDoorCountDto dto)
     {
-        throw new NotImplementedException();
+        await _setBodyDoorCountUseCase.ExecuteAsync(dto);
     }
 
     public async Task SetMaterial(SetMaterialDto dto)
